@@ -10,7 +10,7 @@ struct FetchService {
     enum FetchError: Error {
         case badResponse
     }
-    let baseURL = URL(string: "https://breaking-bad-api-six.vercel.app/api")!
+    private let baseURL = URL(string: "https://breaking-bad-api-six.vercel.app/api")!
     
     func fetchQuote(from show: String) async throws -> Quote {
         let quoteURL = baseURL.appending(path: "quotes/random")
