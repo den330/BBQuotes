@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import SwiftUI
 
 @Observable
 @MainActor
@@ -37,7 +38,7 @@ class ViewModel {
         status = .fetching
         do {
             quote = try await fetcher.fetchQuote(from: show)
-            character = try await fetcher.fetchCharacter(show)
+            character = try await fetcher.fetchCharacter(quote.character)
             character.death = try await fetcher.fetchDeath(for: character.name)
             status = .success
         } catch {
